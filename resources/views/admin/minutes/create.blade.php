@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-        <form action="{{ route("admin.minutes.store") }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route("admin.minutes.store") }}" method="POST" enctype="multipart/form-data" autocomplete="off">
             @csrf
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                 <label for="name">{{ trans('global.minute.fields.name') }}*</label>
@@ -162,9 +162,6 @@
 </div>
 @endsection
 @section('scripts')
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
 <script>
     $('#reservation').daterangepicker({
         singleDatePicker: true,
@@ -175,5 +172,4 @@
       }
     })
 </script>
-
 @endsection

@@ -22,7 +22,7 @@
                         <th width="10">
 
                         </th>
-                        <th>
+                         <th>
                             {{ trans('global.minute.fields.name') }}
                         </th>
                         <th>
@@ -120,7 +120,12 @@
 //   dtButtons.push(deleteButton)
 // @endcan
 
-  $('.datatable:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  $('.datatable:not(.ajaxTable)').DataTable({
+      buttons: dtButtons,
+      "pageLength": 5,
+      "order": [[ 3, "desc" ]],
+
+      })
 })
 
 </script>
