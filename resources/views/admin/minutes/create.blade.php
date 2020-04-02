@@ -11,8 +11,15 @@
             @csrf
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                 <label for="name">{{ trans('global.minute.fields.name') }}*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-file-signature"></i>
+                      </span>
+                    </div>
                 <input type="text" id="name" name="name" class="form-control"
                 value="{{ old('name', isset($minute) ? $minute->name : '') }}" aria-describedby="nameHelp">
+                </div>
                 <small id="nameHelp" class="form-text text-muted">Nyatakan Nama Aktiviti</small>
                 @if($errors->has('name'))
                     <p class="help-block">
@@ -26,8 +33,15 @@
 
             <div class="form-group {{ $errors->has('anjuran') ? 'has-error' : '' }}">
                 <label for="anjuran">{{ trans('global.minute.fields.anjuran') }}</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-home"></i>
+                      </span>
+                    </div>
                 <input type="text" id="anjuran" name="anjuran" class="form-control"
                 value="{{ old('anjuran', isset($minute) ? $minute->anjuran : '') }}" aria-describedby="anjuranHelp">
+                </div>
                 <small id="anjuranHelp" class="form-text text-muted">Nyatakan Nama Penganjur</small>
                 @if($errors->has('anjuran'))
                     <p class="help-block">
@@ -39,7 +53,21 @@
                 </p>
             </div>
 
-            <div class="form-group {{ $errors->has('tarikh') ? 'has-error' : '' }}">
+            <div class="form-group">
+                <label>Tarikh Dan Masa</label>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <i class="far fa-calendar-alt"></i>
+                    </span>
+                  </div>
+                  <input type="text" name="tkhmasa" class="form-control float-right" id="reservation">
+                </div>
+                <!-- /.input group -->
+            </div>
+
+            {{-- <div class="form-group {{ $errors->has('tarikh') ? 'has-error' : '' }}">
                 <label for="tarikh">{{ trans('global.minute.fields.tarikh') }}</label>
                 <input type="date" id="tarikh" name="tarikh" class="form-control" value="{{ old('tarikh', isset($minute) ? $minute->tarikh : '') }}">
                 @if($errors->has('tarikh'))
@@ -63,11 +91,18 @@
                 <p class="helper-block">
                     {{ trans('global.minute.fields.masa_helper') }}
                 </p>
-            </div>
+            </div> --}}
 
             <div class="form-group {{ $errors->has('tempat') ? 'has-error' : '' }}">
                 <label for="tempat">{{ trans('global.minute.fields.tempat') }}</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="fas fa-map-marker"></i>
+                      </span>
+                    </div>
                 <input type="text" id="tempat" name="tempat" class="form-control" value="{{ old('tempat', isset($minute) ? $minute->tempat : '') }}">
+                </div>
                 @if($errors->has('tempat'))
                     <p class="help-block">
                         {{ $errors->first('tempat') }}
@@ -120,7 +155,25 @@
             <div>
                 <input class="btn btn-danger" type="submit" value="{{ trans('global.save') }}">
             </div>
+
+
         </form>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+<script>
+    $('#reservation').daterangepicker({
+        singleDatePicker: true,
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
+    })
+</script>
+
 @endsection

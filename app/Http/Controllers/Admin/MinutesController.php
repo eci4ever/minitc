@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyMinuteRequest;
 use App\Http\Requests\StoreMinuteRequest;
@@ -34,7 +33,14 @@ class MinutesController extends Controller
         abort_unless(\Gate::allows('minute_create'), 403);
         $userid = auth()->user()->id;
 
-        $minute = Minute::create($request->all()+ ['user_id' => $userid]);
+        $date = date('Y-m-d',strtotime($request->tkhmasa));
+        $time = date('H:i:s',strtotime($request->tkhmasa));
+
+        $minute = Minute::create($request->all()+ [
+            'user_id' => $userid,
+            'tarikh' => $date,
+            'masa' => $time
+        ]);
 
         $verify = Verify::create(['minute_id' => $minute->id]);
 
@@ -45,14 +51,24 @@ class MinutesController extends Controller
     {
         abort_unless(\Gate::allows('minute_edit'), 403);
 
-        return view('admin.minutes.edit', compact('minute'));
+        $time = strtotime($minute->tarikh.' '.$minute->masa);
+
+        $tkhmasa = date('m/d/Y H:i A', $time);
+
+        return view('admin.minutes.edit', compact('minute', 'tkhmasa'));
     }
 
     public function update(UpdateMinuteRequest $request, Minute $minute)
     {
         abort_unless(\Gate::allows('minute_edit'), 403);
 
-        $minute->update($request->all());
+        $date = date('Y-m-d',strtotime($request->tkhmasa));
+        $time = date('H:i:s',strtotime($request->tkhmasa));
+
+        $minute->update($request->all()+ [
+            'tarikh' => $date,
+            'masa' => $time
+        ]);
 
         return redirect()->route('admin.minutes.index');
     }

@@ -74,38 +74,15 @@
                         </a>
                     </li>
                 @endcan
-                <li class="nav-item has-treeview {{ request()->is('admin/profiles*') ? 'menu-open' : '' }} {{ request()->is('admin/profiles*') ? 'menu-open' : '' }}">
-                    <a class="nav-link nav-dropdown-toggle">
-                        <i class="fas fa-users">
-
-                        </i>
+                <li class="nav-item">
+                    <a href="{{ route("admin.profiles.index") }}" class="nav-link {{ request()->is('admin/profiles') || request()->is('admin/profiles/*') ? 'active' : '' }}">
                         <p>
-                            <span>Profile Management</span>
-                            <i class="right fa fa-angle-left"></i>
+                            <i class="fas fa-user">
+
+                            </i>
+                            <span>Profile</span>
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link {{ request()->is('admin/profiles') || request()->is('admin/profiles/*') ? 'active' : '' }}">
-                                <i class="fas fa-user">
-
-                                </i>
-                                <p>
-                                    <span>Profile</span>
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link {{ request()->is('admin/chpassword') || request()->is('admin/chpassword/*') ? 'active' : '' }}">
-                                <i class="fas fa-lock">
-
-                                </i>
-                                <p>
-                                    <span>Change Password</span>
-                                </p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 @can('minute_access')
                     <li class="nav-item has-treeview {{ request()->is('admin/minutes*') ? 'menu-open' : '' }} {{ request()->is('admin/verifies*') ? 'menu-open' : '' }}">

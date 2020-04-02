@@ -12,6 +12,11 @@ class Create1555355612782UsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email');
+            $table->string('nokp')->nullable();
+            $table->string('jawatan')->nullable();
+            $table->string('skim')->nullable();
+            $table->string('notelefon')->nullable();
+            $table->string('avatar')->default('user.jpg');
             $table->datetime('email_verified_at')->nullable();
             $table->string('password');
             $table->string('remember_token')->nullable();
