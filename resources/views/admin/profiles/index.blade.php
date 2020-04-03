@@ -6,7 +6,7 @@
         <div class="card-header">{{ $user->name }}</div>
         <div class="card-body">
                 <div>
-                    <img class="rounded d-block border border-primary mb-4" src="/storage/avatars/{{ $user->avatar }}" width="120px" height="120px"  />
+                    <img class="rounded d-block border border-primary mb-4" src="/storage/avatars/{{ $user->avatar }}" width="110px" height="110px"  />
                 </div>
             <table class="table">
                 <tr>

@@ -36,12 +36,12 @@ class ProfilesController extends Controller
 
         if (!empty($request->avatar)) {
             $avatarName = $user->id.'_avatar'.time().'.'.request()->avatar->getClientOriginalExtension();
-            if ($user->avatar != $avatarName) {
+            if ($user->avatar != $avatarName && $user->avatar != 'user.png') {
                 Storage::delete('public/avatars/'.$user->avatar);
             }
             $request->avatar->storeAs('avatars',$avatarName, 'public');
             $user->update(['avatar' => $avatarName]);
-            Image::make('storage/avatars/'.$user->avatar)->resize(200, 200)->save();
+            Image::make('storage/avatars/'.$user->avatar)->resize(150, 150)->save();
         }
 
         $data = $request->all();

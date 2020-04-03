@@ -54,8 +54,8 @@
                             <td>
                                 {{ date('d M Y', strtotime($minute->tarikh)) ?? '' }}
                             </td>
-                            <td class="table-success font-weight-bold">
-                                {{ $minute->verify->status ?? 'Unverified' }}
+                            <td class="font-weight-bold">
+                                <span class="{{ isset($minute->verify->status) ? 'text-success' : 'text-danger' }}">{{ $minute->verify->status ?? 'Unverified' }} </span>
                             </td>
                             <td>
                                 @can('minute_show')

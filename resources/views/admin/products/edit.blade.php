@@ -12,7 +12,14 @@
             @method('PUT')
             <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
                 <label for="name">{{ trans('global.product.fields.name') }}*</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">
+                        <i class="far fa-clipboard"></i>
+                      </span>
+                    </div>
                 <input type="text" id="name" name="name" class="form-control" value="{{ old('name', isset($product) ? $product->name : '') }}">
+                </div>
                 @if($errors->has('name'))
                     <p class="help-block">
                         {{ $errors->first('name') }}

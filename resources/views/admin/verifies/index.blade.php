@@ -46,8 +46,8 @@
                             <td>
                                 {{ $minute->tarikh ?? 'Test' }}
                             </td>
-                            <td class="table-success font-weight-bold text-info">
-                                {{ $minute->verify->status ?? 'Unverified' }}
+                            <td class="font-weight-bold">
+                                <span class="{{ isset($minute->verify->status) ? 'text-success' : 'text-danger' }}">{{ $minute->verify->status ?? 'Unverified' }} </span>
                             </td>
                             <td>
                                 <a class="btn btn-xs btn-warning" href="verifies/{{ $minute->id }}/edit">
