@@ -29,7 +29,7 @@
                             {{ trans('global.product.fields.description') }}
                         </th>
                         <th>
-                            {{ trans('global.product.fields.price') }}
+                            Tarikh dan Masa
                         </th>
                         <th>
                             &nbsp;
@@ -49,7 +49,7 @@
                                 {{ $product->description ?? '' }}
                             </td>
                             <td>
-                                {{ $product->price ?? '' }}
+                                {{ date('d M Y H:i A', strtotime($product->price)) ?? '' }}
                             </td>
                             <td>
                                 @can('product_show')

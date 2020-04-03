@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="min-height: 917px;">
     <!-- Brand Logo -->
     <a href="/admin" class="brand-link">
-        <span class="brand-text font-weight-light">Sistem Minit Curai</span>
+        <span class="brand-text font-weight-light">JPN Melaka SSO</span>
     </a>
 
     <!-- Sidebar -->

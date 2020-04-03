@@ -37,7 +37,7 @@
                         {{ trans('global.minute.fields.tarikh') }}
                     </th>
                     <td>
-                        {{ $minute->tarikh }}
+                        {{ date('d M Y', strtotime($minute->tarikh)) }}
                     </td>
                 </tr>
                 <tr>

@@ -311,7 +311,7 @@ return [
     'deselect_all'                         => 'Deselect all',
     'team-management'                      => 'Teams',
     'team-management-singular'             => 'Team',
-    'site_title'                           => 'Sistem Minit Curai',
+    'site_title'                           => 'JPN Melaka SSO',
     'userManagement'                       => [
         'title'          => 'User Management',
         'title_singular' => 'User Management',

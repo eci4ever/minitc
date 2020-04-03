@@ -52,7 +52,7 @@
                                 {{ $minute->anjuran ?? '' }}
                             </td>
                             <td>
-                                {{ $minute->tarikh ?? '' }}
+                                {{ date('d M Y', strtotime($minute->tarikh)) ?? '' }}
                             </td>
                             <td class="table-success font-weight-bold">
                                 {{ $minute->verify->status ?? 'Unverified' }}

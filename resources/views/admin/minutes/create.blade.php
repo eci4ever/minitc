@@ -64,7 +64,6 @@
                   </div>
                   <input type="text" name="tkhmasa" class="form-control float-right" id="reservation">
                 </div>
-                <!-- /.input group -->
             </div>
 
             {{-- <div class="form-group {{ $errors->has('tarikh') ? 'has-error' : '' }}">

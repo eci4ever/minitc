@@ -7,6 +7,7 @@ use App\Http\Requests\MassDestroyProductRequest;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Product;
+use Carbon\Carbon;
 
 class ProductsController extends Controller
 {
@@ -30,7 +31,9 @@ class ProductsController extends Controller
     {
         abort_unless(\Gate::allows('product_create'), 403);
 
-        $product = Product::create($request->all());
+        $datetime = Carbon::parse($request->price)->toDateTimeString();
+
+        $product = Product::create($request->except('price') + ['price' => $datetime]);
 
         return redirect()->route('admin.products.index');
     }
@@ -46,7 +49,9 @@ class ProductsController extends Controller
     {
         abort_unless(\Gate::allows('product_edit'), 403);
 
-        $product->update($request->all());
+        $datetime = Carbon::parse($request->price)->toDateTimeString();
+
+        $product->update($request->except('price') + ['price' => $datetime]);
 
         return redirect()->route('admin.products.index');
     }

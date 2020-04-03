@@ -101,7 +101,12 @@
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 
 
-  $('.datatable:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  $('.datatable:not(.ajaxTable)').DataTable({
+      buttons: dtButtons,
+      "pageLength": 5,
+      "order": [[ 3, "desc" ]],
+
+      })
 })
 
 </script>

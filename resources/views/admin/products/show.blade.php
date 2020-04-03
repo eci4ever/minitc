@@ -19,18 +19,18 @@
                 </tr>
                 <tr>
                     <th>
-                        {{ trans('global.product.fields.description') }}
+                        Description
                     </th>
                     <td>
-                        {!! $product->description !!}
+                        {{ $product->description }}
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        {{ trans('global.product.fields.price') }}
+                        Tarikh Dan Masa
                     </th>
                     <td>
-                        ${{ $product->price }}
+                        {{ date('d M Y H:i A', strtotime($product->price)) }}
                     </td>
                 </tr>
             </tbody>
