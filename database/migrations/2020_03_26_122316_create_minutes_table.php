@@ -18,8 +18,7 @@ class CreateMinutesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->string('anjuran')->nullable();
-            $table->date('tarikh')->nullable();
-            $table->time('masa')->nullable();
+            $table->timestamp('tarikh')->nullable();
             $table->string('tempat')->nullable();
             $table->longText('pegawai')->nullable();
             $table->longText('isu')->nullable();

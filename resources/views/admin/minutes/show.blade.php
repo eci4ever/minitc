@@ -53,7 +53,7 @@
                         {{ trans('global.minute.fields.masa') }}
                     </th>
                     <td>
-                        {{ \Carbon\Carbon::createFromFormat('H:i:s',$minute->masa)->format('g:i A') }}
+                        {{ date('H:i A', strtotime($minute->tarikh)) }}
                     </td>
                 </tr>
                 <tr>

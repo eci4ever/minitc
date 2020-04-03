@@ -8,6 +8,7 @@ use App\Http\Requests\StoreMinuteRequest;
 use App\Http\Requests\UpdateMinuteRequest;
 use App\Minute;
 use App\Verify;
+use Carbon\Carbon;
 use PDF;
 
 class MinutesController extends Controller
@@ -31,15 +32,14 @@ class MinutesController extends Controller
     public function store(StoreMinuteRequest $request)
     {
         abort_unless(\Gate::allows('minute_create'), 403);
+
         $userid = auth()->user()->id;
 
-        $date = date('Y-m-d',strtotime($request->tkhmasa));
-        $time = date('H:i:s',strtotime($request->tkhmasa));
+        $datetime = Carbon::parse($request->tarikh)->toDateTimeString();
 
-        $minute = Minute::create($request->all()+ [
+        $minute = Minute::create($request->except('tarikh') + [
             'user_id' => $userid,
-            'tarikh' => $date,
-            'masa' => $time
+            'tarikh' => $datetime
         ]);
 
         $verify = Verify::create(['minute_id' => $minute->id]);
@@ -51,24 +51,16 @@ class MinutesController extends Controller
     {
         abort_unless(\Gate::allows('minute_edit'), 403);
 
-        $time = strtotime($minute->tarikh.' '.$minute->masa);
-
-        $tkhmasa = date('m/d/Y H:i A', $time);
-
-        return view('admin.minutes.edit', compact('minute', 'tkhmasa'));
+        return view('admin.minutes.edit', compact('minute'));
     }
 
     public function update(UpdateMinuteRequest $request, Minute $minute)
     {
         abort_unless(\Gate::allows('minute_edit'), 403);
 
-        $date = date('Y-m-d',strtotime($request->tkhmasa));
-        $time = date('H:i:s',strtotime($request->tkhmasa));
+        $datetime = Carbon::parse($request->tarikh)->toDateTimeString();
 
-        $minute->update($request->all()+ [
-            'tarikh' => $date,
-            'masa' => $time
-        ]);
+        $minute->update($request->except('tarikh') + ['tarikh' => $datetime]);
 
         return redirect()->route('admin.minutes.index');
     }
@@ -154,8 +146,8 @@ class MinutesController extends Controller
         PDF::Cell(0, 0, '3.     Tarikh / Masa / Tempat:', 0, 1, 'L', 0, '', 1);
         PDF::SetFont('Times','',14);
         PDF::setCellPaddings(10,0,0,0);
-        $mytime = \Carbon\Carbon::createFromFormat('H:i:s',$minute->masa)->format('h:i A');
-        $location = $minute->tarikh . ' / ' . $mytime . ' / ' . $minute->tempat;
+        $mytime = Carbon::parse($minute->tarikh);
+        $location = $mytime->format('j F Y') . ' / ' . $mytime->format('h:i A') . ' / ' . $minute->tempat;
         PDF::Cell(0, 0, $location , 0, 1, 'L', 0, '', 1);
 
         //Pegawai Terlibat

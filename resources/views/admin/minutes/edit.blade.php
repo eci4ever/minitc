@@ -53,8 +53,8 @@
                       <i class="fas fa-calendar-alt"></i>
                     </span>
                   </div>
-                  <input type="text" name="tkhmasa" class="form-control float-right"
-                    value="{{ old('tarikh', isset($tkhmasa) ? $tkhmasa : '') }}" id="reservation">
+                  <input type="text" name="tarikh" class="form-control float-right"
+                    value="{{ old('tarikh', isset($minute->tarikh) ? $minute->tarikh : '') }}" id="reservation">
                 </div>
             </div>
 
@@ -158,7 +158,7 @@
       timePicker: true,
       timePickerIncrement: 30,
       locale: {
-        format: 'MM/DD/YYYY hh:mm A'
+        format: 'YYYY-MM-DD hh:mm A'
       }
     })
 </script>
