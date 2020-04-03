@@ -29,15 +29,18 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('products', 'ProductsController');
 
-    Route::delete('minutes/destroy', 'MinutesController@massDestroy')->name('minutes.massDestroy');
-
     Route::get('minutes/{minute}/printpdf', 'MinutesController@printPDF')->name('minutes.printPDF');
 
     Route::resource('minutes', 'MinutesController');
 
-    Route::delete('verifies/destroy', 'VerifiesController@massDestroy')->name('verifies.massDestroy');
-
     Route::get('verifies/{minute}/edit', 'VerifiesController@edit')->name('verifies.edit');
 
     Route::resource('verifies', 'VerifiesController');
+});
+
+Route::group(['prefix' => 'reports', 'as' => 'reports.', 'namespace' => 'Reports','middleware' => ['auth']], function () {
+
+    Route::get('minutereport/{minute}', 'MinuteReportController@index')->name('minutereports.index');
+
+
 });

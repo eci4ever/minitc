@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-<a href="{{ $minute->id }}/printpdf/" class="btn btn-primary btn-sm mb-4" target="_blank">Print Document</a>
+<a href="{{ route('reports.minutereports.index', $minute->id) }}" class="btn btn-primary btn-sm mb-4" target="_blank">Print Document</a>
 
 <div class="card">
     <div class="card-header">
