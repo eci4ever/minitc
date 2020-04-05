@@ -22,7 +22,7 @@
                         <th width="10">
 
                         </th>
-                        <th>
+                        <th width="15%">
                             {{ trans('global.product.fields.name') }}
                         </th>
                         <th>

@@ -5,7 +5,7 @@
     <div class="card">
         <div class="card-header"><strong>Senarai Pergerakan Pegawai Pada {{ now()->format('j F Y') }}</strong>
         <div class="float-right">
-            <form action="{{ route("admin.movements.index") }}" autocomplete="off">
+            <form action="{{ route('admin.movements.index') }}" autocomplete="off">
                 <div class="input-group">
                     <div class="input-group-prepend">
                     </div>

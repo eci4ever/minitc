@@ -99,7 +99,7 @@
                             @can('movement_access')
                                 <li class="nav-item">
                                     <a href="{{ route('admin.movements.index') }}" class="nav-link {{ request()->is('admin/movements') || request()->is('admin/movements/show') ? 'active' : '' }}">
-                                        <i class="fas fa-circle">
+                                        <i class="fas fa-arrows-alt-h">
 
                                         </i>
                                         <p>

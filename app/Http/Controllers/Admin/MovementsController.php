@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreMovementRequest;
 use App\Http\Requests\UpdateMovementRequest;
 use Carbon\Carbon;
@@ -12,14 +13,6 @@ use App\User;
 
 class MovementsController extends Controller
 {
-    public function testpage()
-    {
-        $users = User::findMany(1);
-        $users->load('movements');
-
-        return view('admin.movements.testpage', compact('users'));
-    }
-
     public function myIndex()
     {
         $id = auth()->user()->id;
@@ -30,13 +23,13 @@ class MovementsController extends Controller
         return view('admin.movements.myindex', compact('users'));
     }
 
-    public function index()
+    public function index(Request $request)
     {
         abort_unless(\Gate::allows('movement_access'), 403);
 
         $key = Carbon::today()->toDateString();
 
-        if(!empty(request()->all()))
+        if(!empty($request->all()))
         {
             $key = request()->input('key');
         }
