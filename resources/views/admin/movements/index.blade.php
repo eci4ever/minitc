@@ -18,7 +18,7 @@
         </div>
         <div class="card-body">
             @foreach($users as $key => $user)
-            <div class="col-sm-12">
+            <div class="col-md-12">
                 <div class="business-card">
                     <div class="media">
                         <div class="media-left">
@@ -47,8 +47,8 @@
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
+        @endforeach
     </div>
 
 </div>

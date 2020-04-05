@@ -14,15 +14,12 @@ class MovementsController extends Controller
 {
     public function testpage()
     {
-        //$movements = Movement::findMany(4)->paginate(5);
-
         $users = User::findMany(1);
         $users->load('movements');
 
-        //dd($users);
-
         return view('admin.movements.testpage', compact('users'));
     }
+
     public function myIndex()
     {
         $id = auth()->user()->id;

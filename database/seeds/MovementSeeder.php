@@ -15,14 +15,14 @@ class MovementSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
 
-        for($i = 0; $i < 26; $i++) {
+        for($i = 0; $i < 500; $i++) {
         DB::table('movements')->insert([
-            'user_id' => rand(1,3),
+            'user_id' => rand(1,50),
             'title' => $faker->name,
-            'location' => $faker->city,
-            'start_date' => now(),
+            'location' => $faker->state,
+            'start_date' =>$faker->dateTimeBetween('-3 days', '+1 week'),
             'end_date' => now(),
-            'verifier' => $faker->name,
+            'verifier' => 'Boss',
         ]);
         }
     }
