@@ -84,6 +84,45 @@
                         </p>
                     </a>
                 </li>
+                @can('movement_access')
+                    <li class="nav-item has-treeview {{ request()->is('admin/movements*') ? 'menu-open' : '' }} {{ request()->is('admin/movements*') ? 'menu-open' : '' }}">
+                        <a class="nav-link nav-dropdown-toggle">
+                            <i class="fas fa-road">
+
+                            </i>
+                            <p>
+                                <span>E-Gerak</span>
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            @can('movement_access')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.movements.index') }}" class="nav-link {{ request()->is('admin/movements') || request()->is('admin/movements/show') ? 'active' : '' }}">
+                                        <i class="fas fa-circle">
+
+                                        </i>
+                                        <p>
+                                            <span>All Movement</span>
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('movement_access')
+                                <li class="nav-item">
+                                    <a href="{{ route('admin.movements.myindex') }}" class="nav-link {{ request()->is('admin/movements/myindex') || request()->is('admin/movements/create') || request()->is('admin/movements/*/edit') ? 'active' : '' }}">
+                                        <i class="fas fa-walking">
+
+                                        </i>
+                                        <p>
+                                            <span>My Movement</span>
+                                        </p>
+                                    </a>
+                                </li>
+                            @endcan
+                        </ul>
+                    </li>
+                @endcan
                 @can('minute_access')
                     <li class="nav-item has-treeview {{ request()->is('admin/minutes*') ? 'menu-open' : '' }} {{ request()->is('admin/verifies*') ? 'menu-open' : '' }}">
                         <a class="nav-link nav-dropdown-toggle">

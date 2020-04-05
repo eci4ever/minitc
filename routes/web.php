@@ -9,6 +9,13 @@ Auth::routes(['register' => false]);
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
 
+    Route::get('movements/myindex', 'MovementsController@myindex')->name('movements.myindex');
+
+    Route::get('movements/testpage', 'MovementsController@testpage')->name('movements.testpage');
+
+
+    Route::resource('movements', 'MovementsController');
+
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
 
     Route::resource('permissions', 'PermissionsController');

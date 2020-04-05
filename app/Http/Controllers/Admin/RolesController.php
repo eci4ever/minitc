@@ -45,6 +45,8 @@ class RolesController extends Controller
 
         $permissions = Permission::all()->pluck('title', 'id');
 
+        //dd($permissions);
+
         $role->load('permissions');
 
         return view('admin.roles.edit', compact('permissions', 'role'));

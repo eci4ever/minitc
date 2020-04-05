@@ -71,6 +71,7 @@ class User extends Authenticatable
 
     public function movements()
     {
-        return $this->hasMany(Movement::class);
+        return $this->hasMany(Movement::class,'user_id','id')->orderBy('start_date', 'desc');
     }
+
 }
