@@ -3,7 +3,7 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('global.product.title') }}
+        Show Announcement
     </div>
 
     <div class="card-body">
@@ -11,26 +11,26 @@
             <tbody>
                 <tr>
                     <th>
-                        {{ trans('global.product.fields.name') }}
+                        Title
                     </th>
                     <td>
-                        {{ $product->name }}
+                        {{ $announcement->title }}
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        Description
+                        Content
                     </th>
                     <td>
-                        {{ $product->description }}
+                        <span style="white-space:pre">{{ $announcement->content }}</span>
                     </td>
                 </tr>
                 <tr>
                     <th>
-                        Tarikh Dan Masa
+                        Date and Time
                     </th>
                     <td>
-                        {{ date('d M Y H:i A', strtotime($product->price)) }}
+                        {{ date('d M Y H:i A', strtotime($announcement->datetime)) }}
                     </td>
                 </tr>
             </tbody>

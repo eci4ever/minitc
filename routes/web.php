@@ -31,9 +31,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::resource('profiles', 'ProfilesController');
 
-    Route::delete('products/destroy', 'ProductsController@massDestroy')->name('products.massDestroy');
+    Route::delete('announcements/destroy', 'AnnouncementsController@massDestroy')->name('announcements.massDestroy');
 
-    Route::resource('products', 'ProductsController');
+    Route::resource('announcements', 'AnnouncementsController');
 
     Route::get('minutes/{minute}/printpdf', 'MinutesController@printPDF')->name('minutes.printPDF');
 
@@ -44,9 +44,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('verifies', 'VerifiesController');
 });
 
-Route::group(['prefix' => 'reports', 'as' => 'reports.', 'namespace' => 'Reports','middleware' => ['auth']], function () {
+Route::group(['prefix' => 'reports', 'as' => 'reports.', 'namespace' => 'Reports', 'middleware' => ['auth']], function () {
 
     Route::get('minutereport/{minute}', 'MinuteReportController@index')->name('minutereports.index');
-
-
 });

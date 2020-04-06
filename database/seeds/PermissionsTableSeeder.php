@@ -7,12 +7,13 @@ class PermissionsTableSeeder extends Seeder
 {
     public function run()
     {
-        $permissions = [[
-            'id'         => '1',
-            'title'      => 'user_management_access',
-            'created_at' => '2019-04-15 19:14:42',
-            'updated_at' => '2019-04-15 19:14:42',
-        ],
+        $permissions = [
+            [
+                'id'         => '1',
+                'title'      => 'user_management_access',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42',
+            ],
             [
                 'id'         => '2',
                 'title'      => 'permission_create',
@@ -105,31 +106,31 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'         => '17',
-                'title'      => 'product_create',
+                'title'      => 'announcement_create',
                 'created_at' => '2019-04-15 19:14:42',
                 'updated_at' => '2019-04-15 19:14:42',
             ],
             [
                 'id'         => '18',
-                'title'      => 'product_edit',
+                'title'      => 'announcement_edit',
                 'created_at' => '2019-04-15 19:14:42',
                 'updated_at' => '2019-04-15 19:14:42',
             ],
             [
                 'id'         => '19',
-                'title'      => 'product_show',
+                'title'      => 'announcement_show',
                 'created_at' => '2019-04-15 19:14:42',
                 'updated_at' => '2019-04-15 19:14:42',
             ],
             [
                 'id'         => '20',
-                'title'      => 'product_delete',
+                'title'      => 'announcement_delete',
                 'created_at' => '2019-04-15 19:14:42',
                 'updated_at' => '2019-04-15 19:14:42',
             ],
             [
                 'id'         => '21',
-                'title'      => 'product_access',
+                'title'      => 'announcement_access',
                 'created_at' => '2019-04-15 19:14:42',
                 'updated_at' => '2019-04-15 19:14:42',
             ],
@@ -224,7 +225,8 @@ class PermissionsTableSeeder extends Seeder
                 'title'      => 'movement_access',
                 'created_at' => '2019-04-15 19:14:42',
                 'updated_at' => '2019-04-15 19:14:42',
-            ]];
+            ]
+        ];
 
         Permission::insert($permissions);
     }

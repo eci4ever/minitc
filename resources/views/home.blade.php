@@ -35,9 +35,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>{{ $dminute['total_unverify'] }}</h3>
+                <h3>{{ $dminute['total_minute'] }}</h3>
 
-                <p>New Minutes</p>
+                <p>Total Minutes</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>

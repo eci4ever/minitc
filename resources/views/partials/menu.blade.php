@@ -62,14 +62,14 @@
                         </ul>
                     </li>
                 @endcan
-                @can('product_access')
+                @can('announcement_access')
                     <li class="nav-item">
-                        <a href="{{ route("admin.products.index") }}" class="nav-link {{ request()->is('admin/products') || request()->is('admin/products/*') ? 'active' : '' }}">
+                        <a href="{{ route("admin.announcements.index") }}" class="nav-link {{ request()->is('admin/announcements') || request()->is('admin/announcements/*') ? 'active' : '' }}">
                             <i class="fas fa-bullhorn">
 
                             </i>
                             <p>
-                                <span>{{ trans('global.product.title') }}</span>
+                                <span>Announcement</span>
                             </p>
                         </a>
                     </li>

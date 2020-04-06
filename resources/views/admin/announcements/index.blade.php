@@ -1,17 +1,17 @@
 @extends('layouts.admin')
 @section('content')
-@can('product_create')
+@can('announcement_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route("admin.products.create") }}">
-                {{ trans('global.add') }} {{ trans('global.product.title_singular') }}
+            <a class="btn btn-success" href="{{ route("admin.announcements.create") }}">
+                Add Announcement
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('global.product.title_singular') }} {{ trans('global.list') }}
+        Announcement List
     </div>
 
     <div class="card-body">
@@ -22,14 +22,14 @@
                         <th width="10">
 
                         </th>
-                        <th width="15%">
-                            {{ trans('global.product.fields.name') }}
+                        <th>
+                            Title
                         </th>
                         <th>
-                            {{ trans('global.product.fields.description') }}
+                            Content
                         </th>
-                        <th width="10%">
-                            Tarikh dan Masa
+                        <th>
+                            Date and Time
                         </th>
                         <th>
                             &nbsp;
@@ -37,33 +37,33 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($products as $key => $product)
-                        <tr data-entry-id="{{ $product->id }}">
+                    @foreach($announcements as $key => $announcement)
+                        <tr data-entry-id="{{ $announcement->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $product->name ?? '' }}
+                                {{ $announcement->title ?? '' }}
                             </td>
                             <td>
-                                {{ $product->description ?? '' }}
+                                {{ $announcement->content ?? '' }}
                             </td>
                             <td>
-                                {{ date('d M Y H:i A', strtotime($product->price)) ?? '' }}
+                                {{ date('d M Y H:i A', strtotime($announcement->datetime)) ?? '' }}
                             </td>
                             <td>
-                                @can('product_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.products.show', $product->id) }}">
+                                @can('announcement_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.announcements.show', $announcement->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
-                                @can('product_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.products.edit', $product->id) }}">
+                                @can('announcement_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.announcements.edit', $announcement->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
-                                @can('product_delete')
-                                    <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('announcement_delete')
+                                    <form action="{{ route('admin.announcements.destroy', $announcement->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -86,7 +86,7 @@
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.products.massDestroy') }}",
+    url: "{{ route('admin.announcements.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -110,7 +110,7 @@
     }
   }
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('product_delete')
+@can('announcement_delete')
   dtButtons.push(deleteButton)
 @endcan
 

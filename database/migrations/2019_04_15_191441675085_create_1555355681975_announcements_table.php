@@ -4,15 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Create1555355681975ProductsTable extends Migration
+class Create1555355681975AnnouncementsTable extends Migration
 {
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('announcements', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->longText('description')->nullable();
-            $table->timestamp('price')->nullable();
+            $table->string('title');
+            $table->longText('content')->nullable();
+            $table->timestamp('datetime')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
@@ -20,6 +20,6 @@ class Create1555355681975ProductsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('announcements');
     }
 }

@@ -2,20 +2,20 @@
 
 namespace App\Http\Requests;
 
-use App\Product;
+use App\Announcement;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreProductRequest extends FormRequest
+class UpdateAnnouncementRequest extends FormRequest
 {
     public function authorize()
     {
-        return \Gate::allows('product_create');
+        return \Gate::allows('announcement_edit');
     }
 
     public function rules()
     {
         return [
-            'name' => [
+            'title' => [
                 'required',
             ],
         ];
