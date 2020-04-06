@@ -98,7 +98,7 @@
                         <ul class="nav nav-treeview">
                             @can('movement_access')
                                 <li class="nav-item">
-                                    <a href="{{ route('admin.movements.index') }}" class="nav-link {{ request()->is('admin/movements') || request()->is('admin/movements/show') ? 'active' : '' }}">
+                                    <a href="{{ route('admin.movements.allindex') }}" class="nav-link {{ request()->is('admin/movements/allindex') ? 'active' : '' }}">
                                         <i class="fas fa-arrows-alt-h">
 
                                         </i>

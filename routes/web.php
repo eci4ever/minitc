@@ -11,6 +11,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('movements/myindex', 'MovementsController@myindex')->name('movements.myindex');
 
+    Route::get('movements/allindex', 'MovementsController@allindex')->name('movements.allindex');
+
+    Route::post('movements/allindex', 'MovementsController@allindex')->name('movements.allindex');
+
     Route::resource('movements', 'MovementsController');
 
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');

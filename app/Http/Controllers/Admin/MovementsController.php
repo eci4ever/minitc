@@ -23,27 +23,27 @@ class MovementsController extends Controller
         return view('admin.movements.myindex', compact('users'));
     }
 
-    public function index(Request $request)
+    public function allindex(Request $request)
     {
         abort_unless(\Gate::allows('movement_access'), 403);
 
-        $key = Carbon::today()->toDateString();
+        $datekey = Carbon::today()->toDateString();
 
         if(!empty($request->all()))
         {
-            $key = request()->input('key');
+            $datekey = $request->input('datekey');
         }
 
-        $users = User::whereHas('movements', function ($query) use($key){
-            $query->whereDate('start_date', $key);
+        $users = User::whereHas('movements', function ($query) use($datekey){
+            $query->whereDate('start_date', $datekey);
         })
-        ->get();
+        ->get()->paginate(10);
 
-        $users->load(['movements' => function ($query) use($key) {
-            $query->whereDate('start_date', $key);
+        $users->load(['movements' => function ($query) use($datekey) {
+            $query->whereDate('start_date', $datekey);
         }]);
 
-        return view('admin.movements.index',compact('users', 'key'));
+        return view('admin.movements.allindex',compact('users', 'datekey'));
     }
 
     public function create()

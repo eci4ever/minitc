@@ -28,7 +28,7 @@
                         <th>
                             {{ trans('global.product.fields.description') }}
                         </th>
-                        <th>
+                        <th width="10%">
                             Tarikh dan Masa
                         </th>
                         <th>

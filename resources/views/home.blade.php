@@ -81,6 +81,5 @@
 
 @endsection
 @section('scripts')
-@parent
-
+        {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 @endsection

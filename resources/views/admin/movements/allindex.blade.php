@@ -3,20 +3,22 @@
 <div class="cointainer-fluid">
 
     <div class="card">
-        <div class="card-header"><strong>Senarai Pergerakan Pegawai Pada {{ now()->format('j F Y') }}</strong>
+        <div class="card-header"><strong>Senarai Pergerakan Pegawai Pada {{ $datekey }}</strong>
         <div class="float-right">
-            <form action="{{ route('admin.movements.index') }}" autocomplete="off">
+            <form action="{{ route('admin.movements.allindex') }}" autocomplete="off" method="POST">
+                @csrf
                 <div class="input-group">
                     <div class="input-group-prepend">
                     </div>
                 <input class="form-control" type="text" placeholder="Search.."
-                value="{{ $key }}" name="key" id="datesearch">
+                value="{{ $datekey }}" name="datekey" id="datesearch">
                 <button type="submit"><i class="fa fa-search"></i></button>
                 </div>
               </form>
         </div>
         </div>
         <div class="card-body">
+            {{ $users->appends(['datekey' => $datekey])->links() }}
             @foreach($users as $key => $user)
             <div class="col-md-12">
                 <div class="business-card">
