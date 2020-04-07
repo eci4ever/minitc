@@ -29,9 +29,7 @@ class HomeController
         $dminute['total_moves'] = $moves->count();
         $dminute['total_users'] = count($users);
 
-
         //Month range for chart
-
         for ($i = 0; $i < 5; $i++) {
             $months[] = now()->subMonths($i)->format('Y-m-');
         }

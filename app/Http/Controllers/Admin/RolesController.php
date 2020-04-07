@@ -34,6 +34,7 @@ class RolesController extends Controller
         abort_unless(\Gate::allows('role_create'), 403);
 
         $role = Role::create($request->all());
+
         $role->permissions()->sync($request->input('permissions', []));
 
         return redirect()->route('admin.roles.index');
@@ -45,8 +46,6 @@ class RolesController extends Controller
 
         $permissions = Permission::all()->pluck('title', 'id');
 
-        //dd($permissions);
-
         $role->load('permissions');
 
         return view('admin.roles.edit', compact('permissions', 'role'));
@@ -57,6 +56,7 @@ class RolesController extends Controller
         abort_unless(\Gate::allows('role_edit'), 403);
 
         $role->update($request->all());
+
         $role->permissions()->sync($request->input('permissions', []));
 
         return redirect()->route('admin.roles.index');

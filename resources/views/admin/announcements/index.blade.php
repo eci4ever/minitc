@@ -13,7 +13,6 @@
     <div class="card-header">
         Announcement List
     </div>
-
     <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable">
@@ -70,7 +69,6 @@
                                     </form>
                                 @endcan
                             </td>
-
                         </tr>
                     @endforeach
                 </tbody>
@@ -114,7 +112,11 @@
   dtButtons.push(deleteButton)
 @endcan
 
-  $('.datatable:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  $('.datatable:not(.ajaxTable)').DataTable({
+      buttons: dtButtons,
+      "pageLength": 25,
+      "order": [[ 3, "desc" ]],
+      })
 })
 
 </script>

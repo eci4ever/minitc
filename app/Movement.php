@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Movement extends Model
 {
+    use SoftDeletes;
+
     protected $dates = [
         'start_date',
         'end_date',
@@ -29,6 +31,6 @@ class Movement extends Model
 
     public function user()
     {
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }

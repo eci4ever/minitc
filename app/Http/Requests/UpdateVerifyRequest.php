@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Minute;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateVerifyRequest extends FormRequest

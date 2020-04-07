@@ -123,7 +123,6 @@
       buttons: dtButtons,
       "pageLength": 25,
       "order": [[ 3, "desc" ]],
-
       })
 })
 

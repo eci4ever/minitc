@@ -34,6 +34,7 @@ class UsersController extends Controller
         abort_unless(\Gate::allows('user_create'), 403);
 
         $user = User::create($request->all());
+
         $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('admin.users.index');
@@ -55,6 +56,7 @@ class UsersController extends Controller
         abort_unless(\Gate::allows('user_edit'), 403);
 
         $user->update($request->all());
+
         $user->roles()->sync($request->input('roles', []));
 
         return redirect()->route('admin.users.index');

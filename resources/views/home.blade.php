@@ -111,7 +111,7 @@ new Chart(document.getElementById("bar-chart"), {
       legend: { display: false },
       title: {
         display: true,
-        text: 'Staff movements in 7 months'
+        text: 'Staff movements in 5 months'
       }
     }
 });

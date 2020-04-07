@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreMovementRequest;
@@ -15,7 +14,10 @@ class MovementsController extends Controller
 {
     public function myIndex()
     {
+        abort_unless(\Gate::allows('movement_access'), 403);
+
         $id = auth()->user()->id;
+
         $users = User::findMany($id);
 
         $users->load('movements');
@@ -29,21 +31,20 @@ class MovementsController extends Controller
 
         $datekey = Carbon::today()->toDateString();
 
-        if(!empty($request->all()))
-        {
+        if (!empty($request->all())) {
             $datekey = $request->input('datekey');
         }
 
-        $users = User::whereHas('movements', function ($query) use($datekey){
+        $users = User::whereHas('movements', function ($query) use ($datekey) {
             $query->whereDate('start_date', $datekey);
         })
-        ->get()->paginate(10);
+            ->get()->paginate(10);
 
-        $users->load(['movements' => function ($query) use($datekey) {
+        $users->load(['movements' => function ($query) use ($datekey) {
             $query->whereDate('start_date', $datekey);
         }]);
 
-        return view('admin.movements.allindex',compact('users', 'datekey'));
+        return view('admin.movements.allindex', compact('users', 'datekey'));
     }
 
     public function create()
@@ -55,10 +56,14 @@ class MovementsController extends Controller
 
     public function store(StoreMovementRequest $request)
     {
+        abort_unless(\Gate::allows('movement_create'), 403);
+
         $userid = auth()->user()->id;
 
         $mydate = explode(' - ', request()->input('datetime'));
+
         $start_datetime = Carbon::parse($mydate[0]);
+
         $end_datetime = Carbon::parse($mydate[1]);
 
         $movement = Movement::create($request->except('datetime') + [
@@ -68,22 +73,25 @@ class MovementsController extends Controller
         ]);
 
         return redirect()->route('admin.movements.myindex');
-
     }
 
     public function edit(Movement $movement)
     {
-        abort_unless(\Gate::allows('movement_create'), 403);
+        abort_unless(\Gate::allows('movement_edit'), 403);
 
-        $movement['datetime'] = $movement->start_date.' - '.$movement->end_date;
+        $movement['datetime'] = $movement->start_date . ' - ' . $movement->end_date;
 
         return view('admin.movements.edit', compact('movement'));
     }
 
     public function update(UpdateMovementRequest $request, Movement $movement)
     {
+        abort_unless(\Gate::allows('movement_edit'), 403);
+
         $mydate = explode(' - ', request()->input('datetime'));
+
         $start_datetime = Carbon::parse($mydate[0]);
+
         $end_datetime = Carbon::parse($mydate[1]);
 
         $movement->update($request->except('datetime') + [
@@ -96,9 +104,10 @@ class MovementsController extends Controller
 
     public function destroy(Movement $movement)
     {
+        abort_unless(\Gate::allows('movement_delete'), 403);
+
         $movement->delete();
 
         return back();
     }
-
 }

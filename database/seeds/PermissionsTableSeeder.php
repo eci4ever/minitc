@@ -225,6 +225,18 @@ class PermissionsTableSeeder extends Seeder
                 'title'      => 'movement_access',
                 'created_at' => '2019-04-15 19:14:42',
                 'updated_at' => '2019-04-15 19:14:42',
+            ],
+            [
+                'id'         => '37',
+                'title'      => 'profile_edit',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42',
+            ],
+            [
+                'id'         => '38',
+                'title'      => 'profile_access',
+                'created_at' => '2019-04-15 19:14:42',
+                'updated_at' => '2019-04-15 19:14:42',
             ]
         ];
 

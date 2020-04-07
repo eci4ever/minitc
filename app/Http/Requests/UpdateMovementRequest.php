@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Movement;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateMovementRequest extends FormRequest

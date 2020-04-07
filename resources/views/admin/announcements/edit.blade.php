@@ -1,6 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-
 <div class="card">
     <div class="card-header">
         Edit Announcement
@@ -26,7 +25,6 @@
                     </p>
                 @endif
             </div>
-
             <div class="form-group">
                 <label>Date and Time</label>
                 <div class="input-group">
@@ -39,7 +37,6 @@
                   value="{{ old('tarikh', isset($announcement->datetime) ? $announcement->datetime : '') }}" id="reservation">
                 </div>
             </div>
-
             <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }}">
                 <label for="content">Content</label>
                 <textarea id="content" name="content" class="form-control ">{{ old('content', isset($announcement) ? $announcement->content : '') }}</textarea>
@@ -49,14 +46,12 @@
                     </p>
                 @endif
             </div>
-
             <div>
                 <input class="btn btn-danger" type="submit" value="Save">
             </div>
         </form>
     </div>
 </div>
-
 @endsection
 @section('scripts')
 <script>
