@@ -33,7 +33,6 @@
                                     {{$user->skim}}
                                 </div>
                             </div>
-                            {{-- <div class="job">{{ $user->skim }}</div> --}}
                             @foreach($user->movements as $key => $item)
                             <div class="card mt-3">
                                 <div class="card-header py-1 bg-info">

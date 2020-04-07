@@ -1,7 +1,6 @@
 @extends('layouts.admin')
 @section('content')
 <div class="container-fluid">
-
     <div class="card">
         <div class="card-header">{{ $user->name }}</div>
         <div class="card-body">
@@ -20,21 +19,21 @@
                     <td>{{ $user->email}}</td>
                 </tr>
                 <tr>
-                    <td><strong>No. Kad Pengenalan</strong></td>
+                    <td><strong>Identity No.</strong></td>
                     <td>:</td>
                     <td>{{ $user->nokp}}</td>
                 </tr>
                 <tr>
-                    <td><strong>Jawatan</strong></td>
+                    <td><strong>Job Post</strong></td>
                     <td>:</td>
                     <td>{{ $user->jawatan}}</td>
                 </tr>
                 <tr>
-                    <td><strong>Skim dan Gred</strong></td>
+                    <td><strong>Scheme and Grade</strong></td>
                     <td>:</td>
                     <td>{{ $user->skim}}</td>
                 </tr><tr>
-                    <td><strong>No. Telefon</strong></td>
+                    <td><strong>Phone No.</strong></td>
                     <td>:</td>
                     <td>{{ $user->notelefon}}</td>
                 </tr>

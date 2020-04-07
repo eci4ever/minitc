@@ -93,7 +93,7 @@
 
                             </i>
                             <p>
-                                <span>E-Gerak</span>
+                                <span>E-Movement</span>
                                 <i class="right fa fa-angle-left"></i>
                             </p>
                         </a>
@@ -164,16 +164,6 @@
                         </ul>
                     </li>
                 @endcan
-                {{-- <li class="nav-item">
-                    <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-                            <i class="fas fa-sign-out-alt">
-
-                            </i>
-                        <p>
-                            <span>{{ trans('global.logout') }}</span>
-                        </p>
-                    </a>
-                </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

@@ -43,7 +43,7 @@
                 @endif
             </div>
             <div class="form-group {{ $errors->has('nokp') ? 'has-error' : '' }}">
-                <label for="nokp">No. Kad Pengenalan</label>
+                <label for="nokp">Identity No.</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
@@ -59,7 +59,7 @@
                 @endif
             </div>
             <div class="form-group {{ $errors->has('jawatan') ? 'has-error' : '' }}">
-                <label for="jawatan">Jawatan</label>
+                <label for="jawatan">Job Post</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
@@ -75,7 +75,7 @@
                 @endif
             </div>
             <div class="form-group {{ $errors->has('skim') ? 'has-error' : '' }}">
-                <label for="skim">Skim dan Gred</label>
+                <label for="skim">Scheme and Grade</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
@@ -91,7 +91,7 @@
                 @endif
             </div>
             <div class="form-group {{ $errors->has('notelefon') ? 'has-error' : '' }}">
-                <label for="notelefon">No. Telefon</label>
+                <label for="notelefon">Phone No.</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
