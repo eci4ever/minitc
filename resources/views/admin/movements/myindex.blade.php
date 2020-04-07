@@ -4,12 +4,12 @@
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
             <a class="btn btn-success" href="{{ route("admin.movements.create") }}">
-                Rekod Pergerakan
+                Add Movement
             </a>
         </div>
     </div>
     <div class="card">
-        <div class="card-header">Senarai Pergerakan Saya</div>
+        <div class="card-header">My Movements</div>
         <div class="card-body">
             @foreach($users as $user)
             <div class="col-sm-12">
@@ -31,9 +31,9 @@
                                     echo '<div class="card mt-3">
                                         <div class="card-header py-1 bg-info">'.$mymovement->title.' </div>
                                         <div class="card-body py-1">
-                                            <span class="text-normal">Tempat : '.$mymovement->location .'</span> <br>
-                                            <span class="text-normal">Tarikh : '.$mymovement->start_date->format('j F Y') .'</span> <br>
-                                            <span class="text-normal">Masa : '.$mymovement->start_date->format('h:i A') .' hingga '.$mymovement->end_date->format('h:i A') .'</span>
+                                            <span class="text-normal">Location : '.$mymovement->location .'</span> <br>
+                                            <span class="text-normal">Date : '.$mymovement->start_date->format('j F Y') .'</span> <br>
+                                            <span class="text-normal">Time : '.$mymovement->start_date->format('h:i A') .' to '.$mymovement->end_date->format('h:i A') .'</span>
                                         </div>
                                         <div class="card-footer">
                                             <a class="btn btn-xs btn-primary" href="'.route('admin.movements.edit', $mymovement->id).'">

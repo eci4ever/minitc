@@ -74,16 +74,18 @@
                         </a>
                     </li>
                 @endcan
-                <li class="nav-item">
-                    <a href="{{ route("admin.profiles.index") }}" class="nav-link {{ request()->is('admin/profiles') || request()->is('admin/profiles/*') ? 'active' : '' }}">
-                        <p>
+                @can('announcement_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.profiles.index") }}" class="nav-link {{ request()->is('admin/profiles') || request()->is('admin/profiles/*') ? 'active' : '' }}">
                             <i class="fas fa-user">
 
                             </i>
+                            <p>
                             <span>Profile</span>
-                        </p>
-                    </a>
-                </li>
+                            </p>
+                        </a>
+                    </li>
+                @endcan
                 @can('movement_access')
                     <li class="nav-item has-treeview {{ request()->is('admin/movements*') ? 'menu-open' : '' }} {{ request()->is('admin/movements*') ? 'menu-open' : '' }}">
                         <a class="nav-link nav-dropdown-toggle">
@@ -162,16 +164,16 @@
                         </ul>
                     </li>
                 @endcan
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logoutform').submit();">
-                        <p>
                             <i class="fas fa-sign-out-alt">
 
                             </i>
+                        <p>
                             <span>{{ trans('global.logout') }}</span>
                         </p>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

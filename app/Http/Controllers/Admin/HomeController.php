@@ -6,7 +6,7 @@ use App\Minute;
 use App\Verify;
 use App\Announcement;
 use App\Movement;
-use Illuminate\Support\Carbon;
+use App\User;
 
 class HomeController
 {
@@ -16,26 +16,19 @@ class HomeController
 
         $announcements = Announcement::all();
 
+        $moves = Movement::all();
+
         $minutes = Minute::all();
 
         $verifies = Verify::all();
 
-        $users = \App\User::all();
-
-        $vari = 0;
-        $dminute['total_unverify'] = 0;
-
-        foreach ($verifies as $verify) {
-
-            if ($verify->status === null) {
-                $dminute['total_unverify']++;
-            }
-        }
+        $users = User::all();
 
         $dminute['total_announcements'] = count($announcements);
         $dminute['total_minute'] = count($minutes);
-        $dminute['total_verify'] = count($verifies) - $dminute['total_unverify'];
+        $dminute['total_moves'] = $moves->count();
         $dminute['total_users'] = count($users);
+
 
         //Month range for chart
 
@@ -50,8 +43,6 @@ class HomeController
         for ($i = 0; $i < 5; $i++) {
             $monthLabel[] = now()->subMonths($i)->format('F Y');
         }
-
-        //dd($movements);
 
         return view('home', compact('dminute', 'current_user', 'monthLabel', 'movements'));
     }

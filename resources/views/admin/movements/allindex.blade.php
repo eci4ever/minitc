@@ -3,7 +3,7 @@
 <div class="cointainer-fluid">
 
     <div class="card">
-        <div class="card-header"><strong>Senarai Pergerakan Pegawai Pada {{ $datekey }}</strong>
+        <div class="card-header"><strong>Staff movement on : {{ $datekey }}</strong>
         <div class="float-right">
             <form action="{{ route('admin.movements.allindex') }}" autocomplete="off" method="POST">
                 @csrf
@@ -37,12 +37,12 @@
                             @foreach($user->movements as $key => $item)
                             <div class="card mt-3">
                                 <div class="card-header py-1 bg-info">
-                                  <strong>Tajuk</strong> : {{ $item->title }}
+                                  <strong>{{ $item->title }}</strong>
                                 </div>
                                 <div class="card-body py-2">
-                                    <strong>Tempat</strong>  : {{ $item->location}} <br>
-                                    <strong>Tarikh</strong>  : {{ $item->start_date->format('j F Y') }} <br>
-                                    <strong>Masa</strong>    : {{ $item->start_date->format('h:i A') }} hingga {{ $item->end_date->format('h:i A') }}
+                                    location  : {{ $item->location}} <br>
+                                    Date  : {{ $item->start_date->format('j F Y') }} <br>
+                                   Time    : {{ $item->start_date->format('h:i A') }} to {{ $item->end_date->format('h:i A') }}
                                 </div>
                             </div>
                             @endforeach

@@ -13,16 +13,16 @@ class MovementSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class, 100)->create();
+        // factory(App\User::class, 100)->create();
 
-        factory(App\Announcement::class, 500)->create();
+        // factory(App\Announcement::class, 500)->create();
 
-        factory(App\Movement::class, 200)->create();
+        factory(App\Movement::class, 500)->create();
 
-        factory(App\Minute::class, 50)->create()->each(function ($minutes) {
-            // Seed the relation with one address
-            $verifies = factory(App\Verify::class)->make();
-            $minutes->verify()->save($verifies);
-        });
+        // factory(App\Minute::class, 50)->create()->each(function ($minutes) {
+        //     // Seed the relation with one address
+        //     $verifies = factory(App\Verify::class)->make();
+        //     $minutes->verify()->save($verifies);
+        // });
     }
 }

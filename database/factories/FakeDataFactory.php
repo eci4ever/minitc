@@ -52,7 +52,7 @@ $factory->define(Movement::class, function (Faker $faker) {
         'user_id' => rand(1, 50),
         'title' => $faker->name,
         'location' => $faker->state,
-        'start_date' => $faker->dateTimeBetween('-3 days', '+1 week'),
+        'start_date' => $faker->dateTimeBetween('-5 months', '+1 week'),
         'end_date' => now(),
         'verifier' => $faker->name,
     ];
