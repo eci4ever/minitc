@@ -46,7 +46,7 @@
                                 {{ $announcement->title ?? '' }}
                             </td>
                             <td>
-                                {{ $announcement->content ?? '' }}
+                                {{ Str::words($announcement->content, 5,'....') }}
                             </td>
                             <td>
                                 {{ date('d M Y H:i A', strtotime($announcement->datetime)) ?? '' }}

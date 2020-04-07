@@ -13,26 +13,16 @@ class MovementSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker\Factory::create();
+        factory(App\User::class, 100)->create();
 
-        // for($i = 0; $i < 500; $i++) {
-        // DB::table('movements')->insert([
-        //     'user_id' => rand(1,50),
-        //     'title' => $faker->name,
-        //     'location' => $faker->state,
-        //     'start_date' =>$faker->dateTimeBetween('-3 days', '+1 week'),
-        //     'end_date' => now(),
-        //     'verifier' => 'Boss',
-        // ]);
-        // }
+        factory(App\Announcement::class, 500)->create();
 
-        // factory(App\Minute::class, 50)->create()->each(function ($minutes) {
-        //     // Seed the relation with one address
-        //     $verifies = factory(App\Verify::class)->make();
-        //     $minutes->verify()->save($verifies);
+        factory(App\Movement::class, 200)->create();
 
-        // });
-
-        factory(App\Product::class, 500)->create();
+        factory(App\Minute::class, 50)->create()->each(function ($minutes) {
+            // Seed the relation with one address
+            $verifies = factory(App\Verify::class)->make();
+            $minutes->verify()->save($verifies);
+        });
     }
 }
