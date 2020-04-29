@@ -35,12 +35,14 @@ class HomeController
         }
 
         for ($y = 0; $y < 5; $y++) {
-            $movements[$y] = Movement::whereDate('start_date', $months[$y] . '%')->get()->count();
+            $movements[$y] = Movement::whereDate('start_date', 'like', $months[$y] . '29')->get()->count();
         }
 
         for ($i = 0; $i < 5; $i++) {
             $monthLabel[] = now()->subMonths($i)->format('F Y');
         }
+
+        dd($monthLabel);
 
         return view('home', compact('dminute', 'current_user', 'monthLabel', 'movements'));
     }
