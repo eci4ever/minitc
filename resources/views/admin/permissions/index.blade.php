@@ -104,7 +104,6 @@
 
   $('.datatable:not(.ajaxTable)').DataTable({
       buttons: dtButtons,
-      "pageLength": 5,
       "order": [[ 1, "desc" ]],
       })
 })
