@@ -19,3 +19,4 @@ https://nodejs.org/en/
 - Run __php artisan migrate --seed__ (it has some seeded data for your testing)
 - Run __php artisan storage:link__
 - That's it: launch the main URL or go to __/login__ and login with default credentials __admin@local.com__ - __password__
+- Run __php artisan serve__ (This is running in development mode)
