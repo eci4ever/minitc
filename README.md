@@ -1,4 +1,4 @@
-## Requeirement
+## Requirement
 
 1. Composer 
 https://getcomposer.org/download/
