@@ -24,7 +24,7 @@
                 <div class="business-card">
                     <div class="media">
                         <div class="media-left">
-                            <img class="rounded d-block border border-primary" src="/minit/storage/avatars/{{ $user->avatar }}" width="110px" height="110px"  />
+                            <img class="rounded d-block border border-primary" src="../../storage/avatars/{{ $user->avatar }}" width="110px" height="110px"  />
                         </div>
                         <div class="media-body ml-4">
                             <div class="job">
